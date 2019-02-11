@@ -14,9 +14,9 @@
 
 @implementation CardMatchingGame
 
-static const int kMismatchPenalty = 2;
-static const int kMatchBonuse = 2;
-static const int KDefaultMode = 3;
+static const NSInteger kMismatchPenalty = 2;
+static const NSInteger kMatchBonuse = 2;
+static const NSInteger KDefaultMode = 3;
 
 - (NSMutableArray *)cards
 {
@@ -63,7 +63,7 @@ static const int KDefaultMode = 3;
     NSArray *chosenCards = [self chosenCards];
     card.choesn = YES;
     if (chosenCards.count == self.mode - 1){
-      int matchScore = [card match:chosenCards];
+      NSInteger matchScore = [card match:chosenCards];
       if (matchScore > 0){
         self.score += matchScore * kMatchBonuse;
         for (Card *matchedCard in chosenCards) {
@@ -86,7 +86,6 @@ static const int KDefaultMode = 3;
     if(card.isChosen && !card.isMatched)
       [chosenCards addObject:card];
   }
-  
   return chosenCards;
 }
 

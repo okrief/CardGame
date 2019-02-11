@@ -9,8 +9,8 @@
 #import "Card.h"
 
 @implementation Card
-- (int) match:(NSArray *)otherCards{
-    int score = 0;
+- (NSInteger) match:(NSArray *)otherCards{
+    NSInteger score = 0;
     for (Card *card in otherCards) {
         if([card.contents isEqualToString:self.contents])
         {

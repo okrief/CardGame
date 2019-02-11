@@ -38,9 +38,9 @@
   return [[self rankStrings] count] - 1;
 }
 
-- (int)match:(NSArray *)otherCards {
-  int matchRank = 0;
-  int score = 0;
+- (NSInteger)match:(NSArray *)otherCards {
+  NSInteger matchRank = 0;
+  NSInteger score = 0;
   for (PlayingCard *card in otherCards) {
     if (self.rank == card.rank){
       score += 4;
