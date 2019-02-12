@@ -24,6 +24,7 @@
 		45A7043A22101365009C1674 /* SetCardDeck.mm in Sources */ = {isa = PBXBuildFile; fileRef = 45A7043922101365009C1674 /* SetCardDeck.mm */; };
 		45A7043D22101ADE009C1674 /* SetViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 45A7043C22101ADE009C1674 /* SetViewController.mm */; };
 		45A704402210294C009C1674 /* PlayingCardViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 45A7043F2210294C009C1674 /* PlayingCardViewController.mm */; };
+		45A70443221197CD009C1674 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A70442221197CD009C1674 /* HistoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		45A7043C22101ADE009C1674 /* SetViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SetViewController.mm; sourceTree = "<group>"; };
 		45A7043E2210294C009C1674 /* PlayingCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardViewController.h; sourceTree = "<group>"; };
 		45A7043F2210294C009C1674 /* PlayingCardViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayingCardViewController.mm; sourceTree = "<group>"; };
+		45A70441221197CD009C1674 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		45A70442221197CD009C1674 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				4599685422074ED3000A919B /* LaunchScreen.storyboard */,
 				4599685722074ED3000A919B /* Info.plist */,
 				4599685822074ED3000A919B /* main.m */,
+				45A70441221197CD009C1674 /* HistoryViewController.h */,
+				45A70442221197CD009C1674 /* HistoryViewController.m */,
 			);
 			path = CradsGame;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				4599685922074ED3000A919B /* main.m in Sources */,
 				459968D72208977E000A919B /* CardMatchingGame.mm in Sources */,
 				45A7043A22101365009C1674 /* SetCardDeck.mm in Sources */,
+				45A70443221197CD009C1674 /* HistoryViewController.m in Sources */,
 				4599684B22074ED2000A919B /* AppDelegate.m in Sources */,
 				459968CE2208390F000A919B /* PlayingCard.mm in Sources */,
 				45A7043D22101ADE009C1674 /* SetViewController.mm in Sources */,

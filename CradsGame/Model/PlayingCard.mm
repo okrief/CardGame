@@ -49,7 +49,6 @@
       score++;
       matchRank++;
     }
-    
   }
   if(matchRank == 0 ) {
     Card *card = [otherCards firstObject];
@@ -60,9 +59,6 @@
   if(matchRank > 0){
     score += 4;
   }
-  
-  
-  NSLog(@"%d", score);
   return score;
 }
 

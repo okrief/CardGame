@@ -35,8 +35,5 @@
   }
   return 4;
 }
--(NSString *)contents{
-  return [NSString stringWithFormat:@"%@",[self isChosen]?@"card chosen":@"card NOT chosen"];
-}
 
 @end

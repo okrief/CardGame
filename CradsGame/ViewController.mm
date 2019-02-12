@@ -8,19 +8,27 @@
 
 #import "ViewController.h"
 #import "CardMatchingGame.h"
+#import "HistoryViewController.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) Deck *deck;
 @property (strong , nonatomic, readwrite) CardMatchingGame *game;
 @property (strong, nonatomic, readwrite) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic , readwrite) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic, readwrite) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) NSMutableArray<NSAttributedString*> *uiHistory;
 - (IBAction)touchResetButton:(UIButton *)sender;
 @end
 
 @implementation ViewController
 
-- (Deck *)deck{
+- (NSMutableArray<NSAttributedString*> *)uiHistory {
+  if(!_uiHistory)
+    _uiHistory= [[NSMutableArray<NSAttributedString*> alloc] init];
+  return _uiHistory;
+}
+
+- (Deck *)deck {
   if(!_deck)
     _deck = [self createDeck];
   return _deck;
@@ -41,63 +49,31 @@
 - (IBAction)touchCardButton:(UIButton *)sender {
   NSInteger chosenButtonIndex = (NSInteger)[self.cardButtons indexOfObject:sender];
   Card* currentCard = [self.game cardAtIndex:chosenButtonIndex];
-  [self updateDisplayLabelCardIsChosen:currentCard];
+  [self.uiHistory addObject:[self createAttributedStringCardIsChosen:currentCard]];
   [self.game chooseCardAtIndex:chosenButtonIndex];
-  //[self updateDisplayLabelForCurrentCard:currentCard];
+  NSAttributedString *current = [self createAttributedStringForDescriptionWithCard:currentCard];
+  if(current){
+    [self.uiHistory addObject:current];
+  }
   [self updateUI];
 }
 
-- (void)updateDisplayLabelCardIsChosen:(Card *)currentCard{
-  self.descriptionLabel.text = [NSString stringWithFormat:@"card %@ was chosen", currentCard.contents];
-}
-- (void)updateUI {
-  for (UIButton *cardButton in self.cardButtons) {
-    NSInteger cardButtonIndex = (NSInteger)[self.cardButtons indexOfObject:cardButton];
-    Card *card = [self.game cardAtIndex:cardButtonIndex];
-    [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-    [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
-    cardButton.enabled = !card.isMatched;
-    self.scoreLabel.text = [NSString stringWithFormat:@"score: %ld" , (long)self.game.score];
-  }
+- (void)updateDescriptionLabel {
+  self.descriptionLabel.attributedText = self.uiHistory.lastObject;
 }
 
-- (void)updateDisplayLabelForCurrentCard:(Card*)currentCard {
-  NSString *turnDescription = [[NSString stringWithFormat:@"card %@",currentCard.contents] stringByAppendingString :currentCard.isMatched? @"  matched: " : @" did not matched: "];
-  if (self.game.history.count >= self.game.mode)
-  {
-    Card *cardBeforeCurrent = self.game.history[self.game.history.count - 2];
-      if ((self.game.chosenCards.count % self.game.mode == 0  && currentCard.isMatched)||
-          (self.game.chosenCards.count % self.game.mode == 1  && !cardBeforeCurrent.isMatched)) {
-        //runs on #mode cards before currentCard (currentCard is not included)
-        for (int i = 1; i < self.game.mode; i++) {
-          Card *card = [self.game.history objectAtIndex:self.game.history.count -1 - i];
-          turnDescription = [turnDescription stringByAppendingString: [NSString stringWithFormat:@" %@ ", card.contents ]];
-          [self clearDescription];
-          self.descriptionLabel.text = turnDescription;
-        }
-      }
-  }
-}
-
-- (NSString *)titleForCard:(Card *)card {
-  return card.isChosen ? card.contents : @"";
-}
-
-- (void)clearDescription {
+- (void)clearDescriptionLabel {
   self.descriptionLabel.text = @"";
-}
-
-- (UIImage *)backgroundImageForCard:(Card *)card {
-  return [UIImage imageNamed: card.isChosen ? @"cardfront" : @"cardback"];
 }
 
 - (IBAction)touchResetButton:(UIButton *)sender {
   [self resetGame];
 }
 
-- (void)resetUI{
+- (void)resetUI {
   self.scoreLabel.text = [NSString stringWithFormat:@"score: 0"];
-  [self clearDescription];
+  [self clearDescriptionLabel];
+  self.uiHistory = [[NSMutableArray<NSAttributedString*> alloc] init];
 }
 
 - (void)resetGameWithMode:(NSInteger)mode{
@@ -105,7 +81,34 @@
   self.game.mode = mode;
 }
 
+-(void)updateUI {
+   [self updateDescriptionLabel];
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  if([segue.identifier isEqualToString:@"history"]) {
+    if( [segue.destinationViewController isKindOfClass:[HistoryViewController class]]){
+      HistoryViewController *historyVc = (HistoryViewController *)segue.destinationViewController;
+      historyVc.history = self.uiHistory;
+    }
+  }
+}
 
+//abstract
+- (NSAttributedString*)createAttributedStringCardIsChosen:(Card *)currentCard {
+  return nil;
+}
+//abstract
+- (NSAttributedString *)createAttributedStringForDescriptionWithCard:(Card *)card {
+  return nil;
+}
 
+//abstract
+- (void)resetGame {
+  
+}
+
+//abstract
+- (void)updateDisplayLabelForCurrentCard:(Card*)currentCard {
+}
 @end

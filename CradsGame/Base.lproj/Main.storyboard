@@ -150,11 +150,11 @@
                                     <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vlt-zH-4ge"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm8-oO-8LR">
-                                <rect key="frame" x="20" y="653" width="263" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bm8-oO-8LR">
+                                <rect key="frame" x="20" y="711" width="263" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -166,10 +166,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d89-9m-rRH">
-                                <rect key="frame" x="335" y="601" width="35" height="30"/>
+                                <rect key="frame" x="330" y="711" width="64" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="reset"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="touchResetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mPe-5M-URR"/>
                                 </connections>
@@ -179,7 +183,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="g0m-yI-cGU"/>
-                    <navigationItem key="navigationItem" id="rEj-Qk-Z4v"/>
+                    <navigationItem key="navigationItem" id="rEj-Qk-Z4v">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="bhZ-5G-cGd">
+                            <connections>
+                                <segue destination="gZt-DJ-X8F" kind="push" identifier="history" id="DOG-OE-vVk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="LG5-Co-6Og" id="DwM-cs-vKm"/>
                         <outlet property="scoreLabel" destination="bm8-oO-8LR" id="bX5-4I-tvL"/>
@@ -199,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155" y="-552"/>
+            <point key="canvasLocation" x="153.62318840579712" y="-552.45535714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="odT-XA-Tb9">
@@ -405,9 +415,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rw7-Jn-ZTC">
-                                <rect key="frame" x="27" y="716" width="372" height="21"/>
+                                <rect key="frame" x="20" y="704" width="309" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -419,18 +429,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2N-Zb-TfV">
-                                <rect key="frame" x="331" y="707" width="35" height="30"/>
+                                <rect key="frame" x="316" y="704" width="78" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="reset"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="touchResetButton:" destination="kOo-8Q-fdF" eventType="touchUpInside" id="5yK-QV-neJ"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.95166927951757185" green="0.8204043588206138" blue="0.9773266990172681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.90109454314720816" green="0.90109454314720816" blue="0.90109454314720816" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="aRf-fW-Fex"/>
                     </view>
-                    <navigationItem key="navigationItem" id="707-EN-KGZ"/>
+                    <navigationItem key="navigationItem" id="707-EN-KGZ">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="h36-Od-Bgm">
+                            <connections>
+                                <segue destination="gZt-DJ-X8F" kind="push" identifier="history" id="xnF-f1-71C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="qIn-ws-v12" id="QgA-fr-flf"/>
                         <outlet property="scoreLabel" destination="rw7-Jn-ZTC" id="JTE-rv-8U1"/>
@@ -459,7 +479,6 @@
         <!--Set-->
         <scene sceneID="5bZ-gp-WFL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uFA-4y-GOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="qSg-w7-F0l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Set" id="pYH-TJ-1wA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="m34-vc-p7Q">
@@ -470,12 +489,51 @@
                         <segue destination="kOo-8Q-fdF" kind="relationship" relationship="rootViewController" id="Asf-2Q-xI4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFA-4y-GOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-865" y="130"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="7p2-TJ-gXS">
+            <objects>
+                <viewController id="gZt-DJ-X8F" customClass="HistoryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1ap-KB-gN7" customClass="His">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2wS-E3-9gQ">
+                                <rect key="frame" x="45" y="160" width="330" height="598"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QX-H3-qvY">
+                                <rect key="frame" x="155" y="111" width="105" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5qH-um-kwM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="di8-LG-34h"/>
+                    <connections>
+                        <outlet property="historyTextView" destination="2wS-E3-9gQ" id="gm5-q3-GtF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VLu-pA-6Ui" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927.536231884058" y="-196.20535714285714"/>
         </scene>
     </scenes>
     <resources>
         <image name="cardback" width="128" height="192"/>
         <image name="cardfront" width="128" height="192"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DOG-OE-vVk"/>
+    </inferredMetricsTieBreakers>
 </document>
