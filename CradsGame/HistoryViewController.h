@@ -11,9 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryViewController : ViewController
-@property (weak, nonatomic) IBOutlet UITextView *historyTextView;
 
+@property (weak, nonatomic) IBOutlet UITextView *historyTextView;
 @property (strong) NSArray<NSAttributedString *> * history;
+
 @end
 
 NS_ASSUME_NONNULL_END

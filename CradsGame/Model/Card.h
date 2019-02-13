@@ -13,11 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Card : NSObject
 
 @property (strong, nonatomic) NSString *contents;
-
 @property (nonatomic, getter = isChosen) BOOL choesn;
 @property (nonatomic, getter = isMatched) BOOL matched;
 
-- (NSInteger) match:(NSArray *)otherCards;
+- (NSInteger) match:(NSArray<Card*> *)otherCards;
 
 @end
 

@@ -8,12 +8,15 @@
 
 #import "SetCard.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation SetCard
-+ (NSArray *)shapes {
+
++ (NSArray<NSString *> *)shapes {
   return @[@"circle", @"traingle", @"square"];
 }
 
-+ (NSArray *)shading {
++ (NSArray<NSString *> *)shading {
   return @[@"filled", @"blank", @"shade"];
 }
 
@@ -21,11 +24,11 @@
   return @[@"red", @"green" , @"blue"];
 }
 
-- (NSInteger) match:(NSArray *)otherCards{
+- (NSInteger) match:(NSArray<Card *> *)otherCards{
   //assuming only 2 other cards..
   if(otherCards.count == 2) {
-    SetCard * card1 = otherCards[0];
-    SetCard * card2 = otherCards[1];
+    SetCard * card1 = (SetCard *)otherCards[0];
+    SetCard * card2 = (SetCard *)otherCards[1];
     for (id key in self.properties.allKeys) {
       if (!(((self.properties[key] == card1.properties[key]) && (self.properties[key] == card2.properties[key]))||
           ((self.properties[key] != card1.properties [key]) && (self.properties[key] != card2.properties[key])&& (card1.properties[key] != card2.properties[key])))){
@@ -37,3 +40,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

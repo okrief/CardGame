@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 #import "CardMatchingGame.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ViewController : UIViewController
 @property (strong , nonatomic, readonly) CardMatchingGame *game;
 @property (strong, nonatomic, readonly) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic, readonly) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic, readonly) IBOutlet UILabel *descriptionLabel;
+
 - (Deck *)createDeck; //abstract
 - (void)updateUI;
 - (void)resetUI;
@@ -25,4 +29,14 @@
 - (NSAttributedString *)createAttributedStringForDescriptionWithCard:(Card *) card; //abstract
 
 @end
+
+static NSString * const kEmptyString = @"";
+static NSString * const kNoMatchString = @" did not matched: ";
+static NSString * const kMatchString = @"  matched: ";
+static NSString * const kCardChosenString = @" was chosen";
+static NSString * const kHistoryIdentifier = @"history";
+static NSString * const kScoreString = @"score: %ld";
+
+
+NS_ASSUME_NONNULL_END
 

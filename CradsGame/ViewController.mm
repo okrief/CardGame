@@ -10,7 +10,10 @@
 #import "CardMatchingGame.h"
 #import "HistoryViewController.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ViewController ()
+
 @property (strong, nonatomic) Deck *deck;
 @property (strong , nonatomic, readwrite) CardMatchingGame *game;
 @property (strong, nonatomic, readwrite) IBOutletCollection(UIButton) NSArray *cardButtons;
@@ -18,6 +21,7 @@
 @property (weak, nonatomic, readwrite) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) NSMutableArray<NSAttributedString*> *uiHistory;
 - (IBAction)touchResetButton:(UIButton *)sender;
+
 @end
 
 @implementation ViewController
@@ -63,7 +67,7 @@
 }
 
 - (void)clearDescriptionLabel {
-  self.descriptionLabel.text = @"";
+  self.descriptionLabel.text = kEmptyString;
 }
 
 - (IBAction)touchResetButton:(UIButton *)sender {
@@ -71,7 +75,7 @@
 }
 
 - (void)resetUI {
-  self.scoreLabel.text = [NSString stringWithFormat:@"score: 0"];
+  self.scoreLabel.text = [NSString stringWithFormat:kScoreString, (long)0];
   [self clearDescriptionLabel];
   self.uiHistory = [[NSMutableArray<NSAttributedString*> alloc] init];
 }
@@ -85,8 +89,8 @@
    [self updateDescriptionLabel];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-  if([segue.identifier isEqualToString:@"history"]) {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(nullable id)sender{
+  if([segue.identifier isEqualToString:kHistoryIdentifier]) {
     if( [segue.destinationViewController isKindOfClass:[HistoryViewController class]]){
       HistoryViewController *historyVc = (HistoryViewController *)segue.destinationViewController;
       historyVc.history = self.uiHistory;
@@ -111,4 +115,7 @@
 //abstract
 - (void)updateDisplayLabelForCurrentCard:(Card*)currentCard {
 }
+
 @end
+
+NS_ASSUME_NONNULL_END

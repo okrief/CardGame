@@ -7,6 +7,9 @@
 //
 
 #import "CardMatchingGame.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic) NSMutableArray *cards;
@@ -18,8 +21,7 @@ static const NSInteger kMismatchPenalty = 2;
 static const NSInteger kMatchBonuse = 2;
 static const NSInteger KDefaultMode = 3;
 
-- (NSMutableArray *)cards
-{
+- (NSMutableArray *)cards {
   if(!_cards)
     _cards = [[NSMutableArray alloc] init];
   return _cards;
@@ -49,7 +51,7 @@ static const NSInteger KDefaultMode = 3;
   return self;
 }
 
-- (Card *)cardAtIndex:(NSUInteger)index{
+- (Card *)cardAtIndex:(NSUInteger)index {
   return index < self.cards.count ? [self.cards objectAtIndex:index] : nil;
 }
 
@@ -60,7 +62,7 @@ static const NSInteger KDefaultMode = 3;
     [self.history removeObject:card];
   } else {
     [self.history addObject:card];
-    NSArray *chosenCards = [self chosenCards];
+    NSArray<Card *> *chosenCards = [self chosenCards];
     card.choesn = YES;
     if (chosenCards.count == self.mode - 1){
       NSInteger matchScore = [card match:chosenCards];
@@ -80,7 +82,7 @@ static const NSInteger KDefaultMode = 3;
   }
 }
 
-- (NSArray *)chosenCards {
+- (NSArray<Card *> *)chosenCards {
   NSMutableArray *chosenCards = [NSMutableArray array];
   for (Card *card  in self.cards) {
     if(card.isChosen && !card.isMatched)
@@ -90,3 +92,5 @@ static const NSInteger KDefaultMode = 3;
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

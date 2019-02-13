@@ -8,12 +8,19 @@
 
 #import "SetViewController.h"
 #import "SetCardDeck.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SetViewController ()
 
 @end
 
 @implementation SetViewController
+
 static const NSInteger kModeValue = 3;
+static  const CGFloat  kNotSelectedBorderWidth = 0.0;
+static  const CGFloat kSelectedBorderWidth = 2.0;
+
 + (NSDictionary<NSString *,NSString *> *)shapesSymbols {
   return @{ @"circle":@"●",
             @"traingle":@"▲",
@@ -43,7 +50,7 @@ static const NSInteger kModeValue = 3;
     [cardButton setAttributedTitle:[self createAttributedStringFromCard:(SetCard *)card] forState:UIControlStateNormal];
   }
   for (UIButton *cardButton in self.cardButtons) {
-    cardButton.layer.borderWidth = 0.0f;
+    cardButton.layer.borderWidth = kNotSelectedBorderWidth;
   }
 }
 
@@ -54,18 +61,18 @@ static const NSInteger kModeValue = 3;
     SetCard *card = (SetCard *)[self.game cardAtIndex:cardButtonIndex];
     cardButton.enabled = !card.isMatched;
     if(card.isChosen){
-      cardButton.layer.borderWidth = 2.0f;
+      cardButton.layer.borderWidth = kSelectedBorderWidth;
       cardButton.layer.borderColor = [UIColor greenColor].CGColor;
     } else {
-      cardButton.layer.borderWidth = 0.0f;
+      cardButton.layer.borderWidth = kNotSelectedBorderWidth;
     }
-    self.scoreLabel.text = [NSString stringWithFormat:@"score: %ld" , (long)self.game.score];
+    self.scoreLabel.text = [NSString stringWithFormat:kScoreString, (long)self.game.score];
   }
 }
 
 - (NSString *)createCardContent:(SetCard *)card {
   NSString *string = [[NSString alloc] init];
-  string = @"";
+  string = kEmptyString;
   NSInteger count = [card.properties[@"count"] intValue];
   NSString *shape = [[SetViewController shapesSymbols] valueForKey:card.properties[@"shape"]];
   
@@ -116,7 +123,7 @@ static const NSInteger kModeValue = 3;
 - (NSAttributedString *)createAttributedStringForDescriptionWithCard:(Card *) currentCard{
   if (self.game.history.count >= self.game.mode)
   {
-    NSAttributedString *matchAtrrString = [[NSAttributedString alloc] initWithString:currentCard.isMatched? @"  matched: " : @" did not match: "];
+    NSAttributedString *matchAtrrString = [[NSAttributedString alloc] initWithString:currentCard.isMatched? kMatchString:kNoMatchString];
     NSMutableAttributedString *attString =[[NSMutableAttributedString alloc] initWithAttributedString:[self createAttributedStringFromCard:(SetCard *)currentCard]];
     [attString appendAttributedString:matchAtrrString];
     Card *cardBeforeCurrent = self.game.history[self.game.history.count - 2];
@@ -134,11 +141,12 @@ static const NSInteger kModeValue = 3;
 }
 
 - (NSAttributedString*)createAttributedStringCardIsChosen:(Card *)currentCard{
-  NSAttributedString *suffix =[[NSAttributedString alloc] initWithString:@" was chosen"];
+  NSAttributedString *suffix =[[NSAttributedString alloc] initWithString:kCardChosenString];
   NSMutableAttributedString *card =[[NSMutableAttributedString alloc] initWithAttributedString:[self createAttributedStringFromCard:(SetCard *)currentCard]];
   [card appendAttributedString:suffix];
   return card;
 }
 
-
 @end
+
+NS_ASSUME_NONNULL_END

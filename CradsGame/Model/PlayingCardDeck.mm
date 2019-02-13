@@ -9,6 +9,8 @@
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation PlayingCardDeck
 
 - (instancetype) init {
@@ -27,3 +29,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

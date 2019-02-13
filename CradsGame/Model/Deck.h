@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) addCard: (Card *) card atTop:(BOOL) atTop;
 - (void) addCard: (Card *) card;
 - (Card *) drawRandomCard;
+
 @end
 
 NS_ASSUME_NONNULL_END

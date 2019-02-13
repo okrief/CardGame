@@ -7,10 +7,14 @@
 //
 
 #import "Deck.h"
-@interface Deck()
-@property (strong, nonatomic) NSMutableArray *cards;
-@end
 
+NS_ASSUME_NONNULL_BEGIN
+
+@interface Deck()
+
+@property (strong, nonatomic) NSMutableArray *cards;
+
+@end
 
 @implementation Deck
 
@@ -43,6 +47,6 @@
   
 }
 
-
-
 @end
+
+NS_ASSUME_NONNULL_END

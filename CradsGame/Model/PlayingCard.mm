@@ -8,19 +8,21 @@
 
 #import "PlayingCard.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation PlayingCard
 
 - (NSString *) contents {
-  NSArray *rankStrings = [PlayingCard rankStrings];
+  NSArray<NSString *> *rankStrings = [PlayingCard rankStrings];
   return [rankStrings[self.rank] stringByAppendingString:self.suit];
 }
 
 @synthesize suit = _suit;
-+ (NSArray *) validSuits {
++ (NSArray<NSString *> *) validSuits {
   return @[@"♥",@"♦",@"♠",@"♣"];
 }
 
-+ (NSArray *) rankStrings {
++ (NSArray<NSString*> *) rankStrings {
   return @[@"?",@"A",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
 }
 
@@ -38,7 +40,7 @@
   return [[self rankStrings] count] - 1;
 }
 
-- (NSInteger)match:(NSArray *)otherCards {
+- (NSInteger)match:(NSArray<Card* > *)otherCards {
   NSInteger matchRank = 0;
   NSInteger score = 0;
   for (PlayingCard *card in otherCards) {
@@ -63,3 +65,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

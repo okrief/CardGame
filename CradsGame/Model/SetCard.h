@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong,nonatomic) NSDictionary *properties;
 
-+ (NSArray *)shapes;
-+ (NSArray *)shading;
++ (NSArray<NSString *> *)shapes;
++ (NSArray<NSString *> *)shading;
 + (NSArray<NSString *> *)colors;
 
 @end

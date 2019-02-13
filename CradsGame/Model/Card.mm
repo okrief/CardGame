@@ -8,8 +8,10 @@
 
 #import "Card.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation Card
-- (NSInteger) match:(NSArray *)otherCards{
+- (NSInteger) match:(NSArray<Card*> *)otherCards{
     NSInteger score = 0;
     for (Card *card in otherCards) {
         if([card.contents isEqualToString:self.contents])
@@ -21,3 +23,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END
